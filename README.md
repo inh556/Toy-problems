@@ -2,4 +2,4 @@
 Toy problems practice
 
 
-daily practice
+A daily practice project.
