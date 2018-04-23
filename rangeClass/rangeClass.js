@@ -41,42 +41,42 @@ var Range = function(start, end, step) {
     this.step = step || 1; 
 }
 // add prototype function
-Range.prototype.range = function() {
-  result = [];
+Range.prototype.getRange = function() {
+  range = [];
   // evaluate if a given start exist
   if (this.start === undefined) {
     return "No start value provided!" // if not, throw error
   }
-
+  // if step undefined and start great than end, backward
   if (this.step === undefined && this.start > this.end) {
     for(var i = this.start; i >= this.end; i--){
-      result.push(i);
+      range.push(i);
     }
-  } else if (this.step < 0) {
+  } else if (this.step < 0) { // if step less than 0, backward
     for(var i = this.end; i >= this.start; i += this.step) {
-        result.push(i);
+        range.push(i);
       }
-  } else {
+  } else { 
     for(var i = this.start; i <= this.end; i += this.step) {
-        result.push(i);
+        range.push(i);
       }
   }
-  return result;
+  return range;
 }
 
 Range.prototype.size = function(){
   // TODO: Your code here
-  return this.range().length;
+  return this.getRange().length;
 }
   
 Range.prototype.each = function(callback){
   // TODO: Your code here
-  this.range().forEach(function(item) {
+  this.getRange().forEach(function(item) {
     callback(item);
   })
 }
 
 Range.prototype.includes = function(val){
   // TODO: Your code here
-  return this.range().includes(val);
+  return this.getRange().includes(val);
 }
